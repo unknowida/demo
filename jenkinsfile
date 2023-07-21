@@ -12,11 +12,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Déplacement dans le dossier git...'
-                dir('demo') {
-                    echo 'Construction du projet...'
-                    sh 'mvn clean install compile package test verify'
-                }
+                echo 'Construction du projet...'
+                sh 'mvn clean install compile package test verify'
             }
         }
         stage('Run') {
