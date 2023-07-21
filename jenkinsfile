@@ -15,14 +15,14 @@ pipeline {
                 echo 'Déplacement dans le dossier git...'
                 dir('demo') {
                     echo 'Construction du projet...'
-                    sh './build-command' // Remplacez ceci par votre commande de build réelle
+                    sh 'mvn clean install' 
                 }
             }
         }
         stage('Run') {
             steps {
                 echo 'Lancement de l\'application...'
-                sh './run-command' // Remplacez ceci par votre commande de run réelle
+                sh 'java -jar target/demo-0.1.jar' 
             }
         }
     }
