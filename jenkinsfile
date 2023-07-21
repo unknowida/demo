@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                echo 'Vidage du dossier courant...'
+                sh 'rm -rf *'
+                echo 'Clonage du dépôt...'
+                git 'https://github.com/unknowida/demo.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Déplacement dans le dossier git...'
+                dir('demo') {
+                    echo 'Construction du projet...'
+                    sh './build-command' // Remplacez ceci par votre commande de build réelle
+                }
+            }
+        }
+        stage('Run') {
+            steps {
+                echo 'Lancement de l\'application...'
+                sh './run-command' // Remplacez ceci par votre commande de run réelle
+            }
+        }
+    }
+}
