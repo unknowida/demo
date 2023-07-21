@@ -15,7 +15,7 @@ pipeline {
                 echo 'Déplacement dans le dossier git...'
                 dir('demo') {
                     echo 'Construction du projet...'
-                    sh 'mvn clean install' 
+                    sh 'mvn clean install compile package test'
                 }
             }
         }
