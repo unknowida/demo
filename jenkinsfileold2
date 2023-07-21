@@ -7,7 +7,7 @@ pipeline {
                 echo 'Vidage du dossier courant...'
                 sh 'rm -rf *'
                 echo 'Clonage du dépôt...'
-                git branch: 'main', url: 'https://github.com/unknowida/demo.git'
+                git 'https://github.com/unknowida/demo.git'
             }
         }
         stage('Build') {
@@ -15,7 +15,7 @@ pipeline {
                 echo 'Déplacement dans le dossier git...'
                 dir('demo') {
                     echo 'Construction du projet...'
-                    sh 'mvn clean install compile package test verify'
+                    sh 'mvn clean install compile package test'
                 }
             }
         }
